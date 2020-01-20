@@ -4,5 +4,9 @@ class TestsController < Simpler::Controller
     @tests = Test.all
   end
 
+  def show
+    @test = Test[params['id']]
+  end
+
   def create; end
 end
