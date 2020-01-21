@@ -5,13 +5,13 @@ class TestsController < Simpler::Controller
   end
 
   def show
-    # @tests = Test.all
-    # render 'tests/index'
+    @tests = Test.all
+    render 'tests/index'
 
     # status 222
     # headers['Content-Type'] = 'text/plain'
 
-    @test = Test[params['id']]
+    # @test = Test[params['id']]
 
     # render plain: 'Plain renderer'
     # render html: '<h1>Plain renderer<h1/>'

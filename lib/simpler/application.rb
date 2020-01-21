@@ -8,7 +8,7 @@ module Simpler
   class Application
     include Singleton
 
-    attr_reader :db
+    attr_reader :db, :router
 
     def initialize
       @router = Router.new

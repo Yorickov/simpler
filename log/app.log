@@ -1,0 +1,22 @@
+I, [2020-01-22T01:51:46.110048 #22567]  INFO -- : Handler: Unknown route
+I, [2020-01-22T01:54:49.363347 #22744]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T01:54:49.363517 #22744]  INFO -- : Paramters: {"ji"=>"gh"}
+I, [2020-01-22T01:54:49.363610 #22744]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T02:04:50.330900 #23020]  INFO -- : Response: 200 OK [text/html]
+I, [2020-01-22T02:05:18.458218 #23088]  INFO -- : Response: 200 OK [text/html] tests/index
+I, [2020-01-22T02:18:44.441628 #23803]  INFO -- : Response: 200 OK [text/html] tests/indexhtml.erb
+I, [2020-01-22T02:19:22.963234 #23803]  INFO -- : Response: 200 OK [text/html] TestsController/show.html.erb
+I, [2020-01-22T02:34:46.033464 #24538]  INFO -- : Response: 200 OK [text/html] #<TestsController:0x00007fd39121b580>/showhtml.erb
+I, [2020-01-22T02:35:33.543184 #24538]  INFO -- : Response: 200 OK [text/html] tests/show.html.erb
+I, [2020-01-22T02:41:00.413527 #25069]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T02:41:00.413698 #25069]  INFO -- : Paramters: {"ji"=>"gh"}
+I, [2020-01-22T02:41:00.413786 #25069]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T02:41:00.416352 #25069]  INFO -- : Response: 200 OK [text/html] tests/show.html.erb
+I, [2020-01-22T02:41:36.027080 #25069]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T02:41:36.027256 #25069]  INFO -- : Paramters: {"ji"=>"gh"}
+I, [2020-01-22T02:41:36.027354 #25069]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T02:41:36.028210 #25069]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T02:45:01.671536 #25328]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T02:45:01.671703 #25328]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T02:45:01.671788 #25328]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T02:45:01.674494 #25328]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
