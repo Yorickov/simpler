@@ -12,7 +12,7 @@ module Simpler
       end
 
       def match?(method, request_path)
-        return false if @method != method
+        return false unless @method == method
 
         pattern =
           @path

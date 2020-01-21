@@ -5,6 +5,9 @@ class TestsController < Simpler::Controller
   end
 
   def show
+    status 222
+    headers['Content-Type'] = 'text/plain'
+
     @test = Test[params['id']]
   end
 

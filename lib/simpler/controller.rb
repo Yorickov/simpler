@@ -13,7 +13,7 @@ module Simpler
     def make_response(action, attributes)
       @request.env['simpler.controller'] = self
       @request.env['simpler.action'] = action
-      @request.params.merge!(attributes)
+      @request.env['simpler.attributes'] = attributes
 
       set_default_headers
       send(action)
@@ -26,6 +26,14 @@ module Simpler
 
     def extract_name
       self.class.name.match('(?<name>.+)Controller')[:name].downcase
+    end
+
+    def status(status_code)
+      @response.status = status_code
+    end
+
+    def headers
+      response
     end
 
     def set_default_headers
@@ -43,7 +51,7 @@ module Simpler
     end
 
     def params
-      @request.params
+      @request.params.merge(@request.env['simpler.attributes'])
     end
 
     def render(template)
