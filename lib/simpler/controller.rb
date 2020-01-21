@@ -1,8 +1,10 @@
 require_relative 'view'
+require_relative 'renderer'
 
 module Simpler
   class Controller
     attr_reader :name, :request, :response
+    attr_accessor :raw_body
 
     def initialize(env)
       @name = extract_name
@@ -37,16 +39,16 @@ module Simpler
     end
 
     def set_default_headers
-      @response['Content-Type'] = 'text/html'
+      headers['Content-Type'] = 'text/html'
     end
 
     def write_response
-      body = render_body
+      body = raw_body || render_default_body
 
       @response.write(body)
     end
 
-    def render_body
+    def render_default_body
       View.new(@request.env).render(binding)
     end
 
@@ -55,6 +57,17 @@ module Simpler
     end
 
     def render(template)
+      template.is_a?(Hash) ? set_raw_body(template) : set_default_body(template)
+    end
+
+    def set_raw_body(opts)
+      renderer = Renderer.new(opts)
+
+      headers['Content-Type'] = renderer.content_type
+      self.raw_body = renderer.prepared_body
+    end
+
+    def set_default_body(template)
       @request.env['simpler.template'] = template
     end
   end
