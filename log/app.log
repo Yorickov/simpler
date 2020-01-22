@@ -20,3 +20,53 @@ I, [2020-01-22T02:45:01.671536 #25328]  INFO -- : Request: GET /tests/2?ji=gh
 I, [2020-01-22T02:45:01.671703 #25328]  INFO -- : Parameters: {"ji"=>"gh"}
 I, [2020-01-22T02:45:01.671788 #25328]  INFO -- : Handler: TestsController#show
 I, [2020-01-22T02:45:01.674494 #25328]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T16:58:55.702296 #1872]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb ["<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Index | Simpler application</title>\n  </head>\n  <body>\n    <h1>Simpler framework at work!</h1>\n\n    <p></p>\n    <ul>\n      \n        <li>Ruby Beginner (0)</li>\n      \n        <li>Ruby Advanced (1)</li>\n      \n        <li>Ruby Expert (2)</li>\n      \n        <li>Go lang (1)</li>\n      \n        <li>Machine Learning (3)</li>\n      \n    </ul>\n  </body>\n</html>\n"]
+I, [2020-01-22T16:59:54.216377 #1872]  INFO -- : Response: 200 OK [text/plain] tests/show.html.erb ["Plain renderer"]
+I, [2020-01-22T17:33:21.133258 #3701]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:33:21.133881 #3701]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:33:21.134183 #3701]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:33:21.138285 #3701]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T17:33:53.701241 #3701]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:33:53.701410 #3701]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:33:53.701490 #3701]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:33:53.701629 #3701]  INFO -- : Response: 200 OK [text/plain] tests/show.html.erb
+I, [2020-01-22T17:44:18.866008 #4047]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:44:18.866195 #4047]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:44:18.866316 #4047]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:44:18.868389 #4047]  INFO -- : Response: 200 OK [text/plain]
+I, [2020-01-22T17:45:54.582525 #4047]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:45:54.582689 #4047]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:45:54.582773 #4047]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:45:54.582949 #4047]  INFO -- : Response: 200 OK [application/json]
+I, [2020-01-22T17:47:13.070215 #4047]  INFO -- : Request: GET /tests
+I, [2020-01-22T17:47:13.070341 #4047]  INFO -- : Parameters: {}
+I, [2020-01-22T17:47:13.070448 #4047]  INFO -- : Handler: TestsController#index
+I, [2020-01-22T17:47:13.071208 #4047]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T17:53:07.308740 #4348]  INFO -- : Request: GET /wrong
+I, [2020-01-22T17:53:07.308866 #4348]  INFO -- : Parameters: {}
+I, [2020-01-22T17:53:07.308961 #4348]  INFO -- : Handler: No such a route
+I, [2020-01-22T17:53:07.309040 #4348]  INFO -- : Response: 404 Not Found [] 
+I, [2020-01-22T17:54:04.255132 #4348]  INFO -- : Request: GET /tests
+I, [2020-01-22T17:54:04.255233 #4348]  INFO -- : Parameters: {}
+I, [2020-01-22T17:54:04.255342 #4348]  INFO -- : Handler: TestsController#index
+I, [2020-01-22T17:54:04.258054 #4348]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T17:54:22.505010 #4348]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:54:22.505161 #4348]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:54:22.505238 #4348]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:54:22.505867 #4348]  INFO -- : Response: 200 OK [text/html] tests/index.html.erb
+I, [2020-01-22T17:55:05.943331 #4348]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:55:05.943469 #4348]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:55:05.943549 #4348]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:55:05.943825 #4348]  INFO -- : Response: 200 OK [application/xml] 
+I, [2020-01-22T17:56:44.558881 #4348]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:56:44.559015 #4348]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:56:44.559088 #4348]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:56:44.561076 #4348]  INFO -- : Response: 200 OK [text/html] tests/show.html.erb
+I, [2020-01-22T17:56:52.065618 #4348]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T17:56:52.065805 #4348]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T17:56:52.065882 #4348]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T17:56:52.066471 #4348]  INFO -- : Response: 200 OK [text/html] tests/show.html.erb
+I, [2020-01-22T18:08:25.312475 #4348]  INFO -- : Request: GET /tests/2?ji=gh
+I, [2020-01-22T18:08:25.312631 #4348]  INFO -- : Parameters: {"ji"=>"gh"}
+I, [2020-01-22T18:08:25.312715 #4348]  INFO -- : Handler: TestsController#show
+I, [2020-01-22T18:08:25.313591 #4348]  INFO -- : Response: 200 OK [text/html] tests/show.html.erb

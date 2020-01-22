@@ -4,7 +4,6 @@ require_relative 'renderer'
 module Simpler
   class Controller
     attr_reader :name, :request, :response
-    attr_accessor :raw_body
 
     def initialize(env)
       @name = extract_name
@@ -43,13 +42,13 @@ module Simpler
     end
 
     def write_response
-      body = raw_body || render_default_body
+      body = request.env['simpler.body'] || render_default_body
 
       @response.write(body)
     end
 
     def render_default_body
-      View.new(@request.env).render(binding)
+      View.new(request.env).render(binding)
     end
 
     def params
@@ -64,7 +63,7 @@ module Simpler
       renderer = Renderer.new(opts)
 
       headers['Content-Type'] = renderer.content_type
-      self.raw_body = renderer.prepared_body
+      @request.env['simpler.body'] = renderer.prepared_body
     end
 
     def set_default_body(template)

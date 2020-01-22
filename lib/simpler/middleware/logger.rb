@@ -49,14 +49,15 @@ module Simpler
 
       status_message = Rack::Utils::HTTP_STATUS_CODES[status]
 
-      path = request.env['simpler.template'] ||
-             [
-               request.env['simpler.controller'].name,
-               request.env['simpler.action']
-             ]
-             .join('/')
+      template = ''
 
-      template = path + '.html.erb'
+      if !request.env['simpler.body'] && status == 200
+        path = request.env['simpler.template'] ||
+               [request.env['simpler.controller'].name,
+                request.env['simpler.action']].join('/')
+
+        template = path + '.html.erb'
+      end
 
       'Response: ' + [status, status_message, body_type, template].join(' ')
     end
