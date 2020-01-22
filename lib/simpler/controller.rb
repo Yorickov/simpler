@@ -1,5 +1,5 @@
 require_relative 'view'
-require_relative 'renderer'
+# require_relative 'base_renderer'
 
 module Simpler
   class Controller
@@ -60,14 +60,20 @@ module Simpler
     end
 
     def set_raw_body(opts)
-      renderer = Renderer.new(opts)
+      require_renderers
+
+      renderer = BaseRenderer.create(opts)
 
       headers['Content-Type'] = renderer.content_type
-      @request.env['simpler.body'] = renderer.prepared_body
+      @request.env['simpler.body'] = renderer.render
     end
 
     def set_default_body(template)
       @request.env['simpler.template'] = template
+    end
+
+    def require_renderers
+      Dir["#{__dir__}/renderers/**/*.rb"].sort.each { |file| require file }
     end
   end
 end

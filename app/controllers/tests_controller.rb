@@ -11,12 +11,12 @@ class TestsController < Simpler::Controller
     # status 222
     # headers['Content-Type'] = 'text/plain'
 
-    @test = Test[params['id']]
+    # @test = Test[params['id']]
 
     # render plain: 'Plain renderer'
     # render html: '<h1>Plain renderer<h1/>'
     # render js: "alert('Hello Rails');"
-    # render json: { 'iam' => 'json' }
+    render json: { 'iam' => 'json' }
     # render xml: { lower_camel_case: 'key' }
   end
 
