@@ -1,8 +1,8 @@
 require_relative 'view'
+# require_relative 'base_renderer'
 
 module Simpler
   class Controller
-
     attr_reader :name, :request, :response
 
     def initialize(env)
@@ -11,9 +11,10 @@ module Simpler
       @response = Rack::Response.new
     end
 
-    def make_response(action)
+    def make_response(action, attributes)
       @request.env['simpler.controller'] = self
       @request.env['simpler.action'] = action
+      @request.env['simpler.attributes'] = attributes
 
       set_default_headers
       send(action)
@@ -28,27 +29,51 @@ module Simpler
       self.class.name.match('(?<name>.+)Controller')[:name].downcase
     end
 
+    def status(status_code)
+      @response.status = status_code
+    end
+
+    def headers
+      response
+    end
+
     def set_default_headers
-      @response['Content-Type'] = 'text/html'
+      headers['Content-Type'] = 'text/html'
     end
 
     def write_response
-      body = render_body
+      body = request.env['simpler.body'] || render_default_body
 
       @response.write(body)
     end
 
-    def render_body
-      View.new(@request.env).render(binding)
+    def render_default_body
+      View.new(request.env).render(binding)
     end
 
     def params
-      @request.params
+      @request.params.merge(@request.env['simpler.attributes'])
     end
 
     def render(template)
+      template.is_a?(Hash) ? set_raw_body(template) : set_default_body(template)
+    end
+
+    def set_raw_body(opts)
+      require_renderers
+
+      renderer = BaseRenderer.create(opts)
+
+      headers['Content-Type'] = renderer.content_type
+      @request.env['simpler.body'] = renderer.render
+    end
+
+    def set_default_body(template)
       @request.env['simpler.template'] = template
     end
 
+    def require_renderers
+      Dir["#{__dir__}/renderers/**/*.rb"].sort.each { |file| require file }
+    end
   end
 end

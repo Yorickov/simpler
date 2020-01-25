@@ -6,10 +6,9 @@ require_relative 'controller'
 
 module Simpler
   class Application
-
     include Singleton
 
-    attr_reader :db
+    attr_reader :db, :router
 
     def initialize
       @router = Router.new
@@ -28,10 +27,16 @@ module Simpler
 
     def call(env)
       route = @router.route_for(env)
-      controller = route.controller.new(env)
-      action = route.action
 
-      make_response(controller, action)
+      if route
+        controller = route.controller.new(env)
+        action = route.action
+        attributes = route.attributes
+
+        make_response(controller, action, attributes) # result
+      else
+        make_exception(404, 'Not Found')
+      end
     end
 
     private
@@ -50,9 +55,12 @@ module Simpler
       @db = Sequel.connect(database_config)
     end
 
-    def make_response(controller, action)
-      controller.make_response(action)
+    def make_response(controller, action, attributes)
+      controller.make_response(action, attributes)
     end
 
+    def make_exception(error_status, msg)
+      [error_status, { 'Content-Type' => 'text/html' }, [msg]]
+    end
   end
 end
